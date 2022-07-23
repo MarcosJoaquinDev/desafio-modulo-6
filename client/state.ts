@@ -74,14 +74,22 @@ const state = {
 		window.addEventListener('beforeunload', (event) => {
 			event.preventDefault();
 			this.resetMatch();
-			savePointsInDataBase(
-				this.data.rtdbRoomId,
-				this.data.numberPlayers.me,
-				this.data.points.me,
-				this.data.numberPlayers.other,
-				this.data.points.other
+			if (this.data.otherOnline) {
+				savePointsInDataBase(
+					this.data.rtdbRoomId,
+					this.data.numberPlayers.me,
+					this.data.points.me,
+					this.data.numberPlayers.other,
+					this.data.points.other
+				).then((res) => {
+					console.log('resert points ok');
+				});
+			}
+			resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
+				(res) => {
+					console.log('reset online');
+				}
 			);
-			resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me);
 		});
 	},
 	createRoom(name: string) {
