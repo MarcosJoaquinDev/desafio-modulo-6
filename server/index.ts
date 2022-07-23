@@ -13,9 +13,10 @@ function main() {
 	APP.use(express.static('dist'));
 	const playersCollection = DATA_BASE.collection('players');
 	const playRoomsCollection = DATA_BASE.collection('playrooms');
+	/*
 	APP.get('*', (req, res) => {
 		res.sendFile(__dirname + 'dist/index.html');
-	});
+	});*/
 	// MANDO UN NOMBRE Y ME DEVUELVE EL ID DEL NOMBRE
 	APP.post('/player', (req, res) => {
 		const { name } = req.body;

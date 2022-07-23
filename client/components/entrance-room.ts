@@ -10,12 +10,13 @@ export function initEntranceRoom() {
 				this.render();
 			}
 			listener() {
-				const formEl = this.shadow.querySelector('.container__form') as any;
+				const formEl: any = this.shadow.querySelector('.container__form');
 				formEl.addEventListener('submit', (e) => {
 					e.preventDefault();
 					const target = e.target as any;
 					const roomCode = target['room-code'].value;
 					const nameUser = target['name-user'].value;
+
 					state.createUser(nameUser, roomCode);
 					target['room-code'].value = '';
 					target['name-user'].value = '';

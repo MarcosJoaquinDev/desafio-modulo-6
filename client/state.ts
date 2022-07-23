@@ -137,6 +137,8 @@ const state = {
 	},
 	async existRoomState(idRoom: number) {
 		const promise = await existRoom(idRoom);
+		console.log(promise);
+
 		if (promise == 'ok') {
 			return true;
 		} else {
