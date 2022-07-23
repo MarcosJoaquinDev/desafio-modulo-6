@@ -12,5 +12,4 @@ router.setRoutes([
 	{ path: '/show-animation', component: 'x-animation-results' },
 	{ path: '/points-results', component: 'x-points-results' },
 	{ path: '/error', component: 'x-error' },
-	{ path: '/disconect', component: 'x-disconect' },
 ]);

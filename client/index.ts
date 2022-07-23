@@ -9,7 +9,6 @@ import { initShowAnimationResults } from './components/show-animation-results';
 import { handsComponent } from './components/hands-component';
 import { initResults } from './components/results';
 import { initErrorPage } from './components/error';
-import { initUserDisconnect } from './components/user-disconect';
 import './router';
 
 function main() {
@@ -24,6 +23,5 @@ function main() {
 	initShowAnimationResults();
 	initResults();
 	initErrorPage();
-	initUserDisconnect();
 }
 main();

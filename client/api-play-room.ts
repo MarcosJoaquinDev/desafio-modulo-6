@@ -93,12 +93,14 @@ async function resetOnline(rtdb: string, player: string) {
 }
 async function savePointsInDataBase(
 	rtdb_Id: string,
-	player: string,
-	points: number
+	player1: string,
+	points1: number,
+	player2: string,
+	points2: number
 ) {
 	const promise = await fetch('/set-points', {
 		method: 'post',
-		body: JSON.stringify({ rtdb_Id, player, points }),
+		body: JSON.stringify({ rtdb_Id, player1, player2, points1, points2 }),
 		headers: { 'Content-Type': 'application/json' },
 	});
 	return promise.json();

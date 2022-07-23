@@ -77,7 +77,9 @@ const state = {
 			savePointsInDataBase(
 				this.data.rtdbRoomId,
 				this.data.numberPlayers.me,
-				this.data.points.me
+				this.data.points.me,
+				this.data.numberPlayers.other,
+				this.data.points.other
 			);
 			resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me);
 		});

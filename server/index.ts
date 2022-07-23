@@ -255,12 +255,21 @@ function main() {
 	});
 	APP.post('/set-points', (req, res) => {
 		const { rtdb_Id } = req.body;
-		const { player } = req.body;
-		const { points } = req.body;
-		const pointsPlayer = RTDB.ref(
-			'playrooms/' + rtdb_Id + '/currentGame/' + player + '/points'
+		const { player1 } = req.body;
+		const { points1 } = req.body;
+		const { player2 } = req.body;
+		const { points2 } = req.body;
+		const mePointsPlayer = RTDB.ref(
+			'playrooms/' + rtdb_Id + '/currentGame/' + player1 + '/points'
 		);
-		pointsPlayer.set(points, () => {
+		const otherPointsPlayer = RTDB.ref(
+			'playrooms/' + rtdb_Id + '/currentGame/' + player2 + '/points'
+		);
+
+		mePointsPlayer.set(points1, () => {
+			res.json({ send: 'ok' });
+		});
+		otherPointsPlayer.set(points2, () => {
 			res.json({ send: 'ok' });
 		});
 	});
