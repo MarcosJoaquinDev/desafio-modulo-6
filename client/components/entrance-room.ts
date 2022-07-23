@@ -10,7 +10,7 @@ export function initEntranceRoom() {
 				this.render();
 			}
 			listener() {
-				const formEl = this.shadow.querySelector('.container__form');
+				const formEl = this.shadow.querySelector('.container__form') as any;
 				formEl.addEventListener('submit', (e) => {
 					e.preventDefault();
 					const target = e.target as any;

@@ -14,7 +14,7 @@ export function initCreateRoom() {
 				this.render();
 			}
 			listener() {
-				const formEl = this.shadow.querySelector('.container__form');
+				const formEl: any = this.shadow.querySelector('.container__form');
 				formEl.addEventListener('submit', (e) => {
 					e.preventDefault();
 					const target = e.target as any;

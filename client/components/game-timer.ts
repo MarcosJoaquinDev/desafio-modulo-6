@@ -14,9 +14,10 @@ export function initGameTimer() {
 				this.render();
 			}
 			sendOption() {
-				const rockButtonEl = this.shadow.querySelector('.hands__rock');
-				const paperButtonEl = this.shadow.querySelector('.hands__paper');
-				const scissorsButtonEl = this.shadow.querySelector('.hands__scissors');
+				const rockButtonEl: any = this.shadow.querySelector('.hands__rock');
+				const paperButtonEl: any = this.shadow.querySelector('.hands__paper');
+				const scissorsButtonEl: any =
+					this.shadow.querySelector('.hands__scissors');
 				rockButtonEl.addEventListener('click', () => {
 					state.setMove('piedra');
 				});
@@ -28,7 +29,7 @@ export function initGameTimer() {
 				});
 			}
 			timer() {
-				const counter = this.shadow.querySelector('.timer');
+				const counter: any = this.shadow.querySelector('.timer');
 				let number = 3;
 				const arrayAnimation = [
 					'timer animate__animated animate__backOutDown',
@@ -37,7 +38,7 @@ export function initGameTimer() {
 					'timer animate__animated animate__backOutUp',
 				];
 				let idInterval = setInterval(() => {
-					counter.setAttribute('class', arrayAnimation[number]);
+					counter.setAttribute('class', arrayAnimation[number]) as any;
 					counter.innerHTML = number.toString();
 					if (number == 0) {
 						counter.setAttribute('class', 'timer');

@@ -12,10 +12,12 @@ export function initHomePage() {
 				this.render();
 			}
 			buttonListener() {
-				const btnNewGameEl = this.shadow.querySelector(
+				const btnNewGameEl: any = this.shadow.querySelector(
 					'.container__btn-new-game'
 				);
-				const btnRoomEl = this.shadow.querySelector('.container__btn-room');
+				const btnRoomEl: any = this.shadow.querySelector(
+					'.container__btn-room'
+				);
 
 				btnNewGameEl.addEventListener('click', () => {
 					Router.go('/new-room');

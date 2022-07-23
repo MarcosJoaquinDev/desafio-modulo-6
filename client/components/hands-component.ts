@@ -23,7 +23,7 @@ export function handsComponent() {
 			}
 			render() {
 				const handPosition = this.getAttribute('position');
-				const option = images.find(
+				const option: any = images.find(
 					(item) => item.option == this.getAttribute('hand')
 				);
 

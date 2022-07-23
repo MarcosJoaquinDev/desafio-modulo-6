@@ -16,13 +16,13 @@ export function initStartGame() {
 				this.render();
 			}
 			listener() {
-				const buttonEl = this.shadow.querySelector('.button-main');
+				const buttonEl: any = this.shadow.querySelector('.button-main');
 				buttonEl.addEventListener('click', () => {
 					state.resetStartGame();
 				});
 			}
 			userOnline(otherOnline: boolean) {
-				const iconEl = this.shadow.querySelector('.icon-inline-other');
+				const iconEl: any = this.shadow.querySelector('.icon-inline-other');
 				if (otherOnline) {
 					iconEl.setAttribute('class', 'icon-inline-other online');
 				} else {
