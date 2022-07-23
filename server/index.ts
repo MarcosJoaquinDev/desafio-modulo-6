@@ -267,10 +267,9 @@ function main() {
 		);
 
 		mePointsPlayer.set(points1, () => {
-			res.json({ send: 'ok' });
-		});
-		otherPointsPlayer.set(points2, () => {
-			res.json({ send: 'ok' });
+			otherPointsPlayer.set(points2, () => {
+				res.json({ send: 'ok' });
+			});
 		});
 	});
 }
