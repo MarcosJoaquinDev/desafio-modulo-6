@@ -6,7 +6,6 @@ const APP = express();
 
 APP.use(cors());
 APP.use(express.json());
-
 const PORT = process.env.PORT || 3000;
 
 function main() {
