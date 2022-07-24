@@ -37,10 +37,11 @@ export function initResults() {
 				});
 			}
 			render() {
+				state.data.flagStart = false;
 				state.countPoints();
+				state.savePointsInrtdb();
 				this.meResult = state.data.result;
 				this.me = state.data.name;
-
 				const imgResult: any = optionResults.find(
 					(item) => item.result == this.meResult
 				);

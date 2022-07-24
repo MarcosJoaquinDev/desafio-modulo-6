@@ -18,6 +18,7 @@ export function initStartGame() {
 			listener() {
 				const buttonEl: any = this.shadow.querySelector('.button-main');
 				buttonEl.addEventListener('click', () => {
+					state.data.flagStart = true;
 					state.resetStartGame();
 				});
 			}
