@@ -71,29 +71,9 @@ const state = {
 			this.data.points.other = res.other.otherPoints;
 		});
 		resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me);
-		window.addEventListener('beforeunload', (event) => {
-			event.preventDefault();
+		window.addEventListener('beforeunload', () => {
 			this.resetMatch();
-			if (!this.data.otherOnline) {
-				savePointsInDataBase(
-					this.data.rtdbRoomId,
-					this.data.numberPlayers.me,
-					this.data.points.me,
-					this.data.numberPlayers.other,
-					this.data.points.other
-				).then((res) => {});
-				resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
-					(res) => {
-						console.log('reset online');
-					}
-				);
-			} else {
-				resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
-					(res) => {
-						console.log('reset online');
-					}
-				);
-			}
+			resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me);
 		});
 	},
 	createRoom(name: string) {
@@ -244,6 +224,13 @@ const state = {
 		resetMatchGame(this.data.rtdbRoomId).then((res) => {
 			console.log('resetear starts');
 		});
+		savePointsInDataBase(
+			this.data.rtdbRoomId,
+			this.data.numberPlayers.me,
+			this.data.points.me,
+			this.data.numberPlayers.other,
+			this.data.points.other
+		).then((res) => {});
 	},
 };
 export { state, move };
