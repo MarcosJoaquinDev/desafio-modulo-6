@@ -81,15 +81,19 @@ const state = {
 					this.data.points.me,
 					this.data.numberPlayers.other,
 					this.data.points.other
-				).then((res) => {
-					console.log('resert points ok');
-				});
+				).then((res) => {});
+				resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
+					(res) => {
+						console.log('reset online');
+					}
+				);
+			} else {
+				resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
+					(res) => {
+						console.log('reset online');
+					}
+				);
 			}
-			resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
-				(res) => {
-					console.log('reset online');
-				}
-			);
 		});
 	},
 	createRoom(name: string) {
