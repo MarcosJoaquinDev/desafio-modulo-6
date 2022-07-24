@@ -74,7 +74,7 @@ const state = {
 		window.addEventListener('beforeunload', (event) => {
 			event.preventDefault();
 			this.resetMatch();
-			if (this.data.otherOnline) {
+			if (!this.data.otherOnline) {
 				savePointsInDataBase(
 					this.data.rtdbRoomId,
 					this.data.numberPlayers.me,
@@ -125,13 +125,13 @@ const state = {
 						this.data.rtdbRoomId = res.rtdbRoomId;
 						incomingPlayer(this.data.name, this.data.rtdbRoomId).then(
 							(typeOfPlayer) => {
-								const userAndRoomMatch =
+								const userAndRoomNotMatch =
 									'this player is Undifined in this room' == typeOfPlayer;
-								this.data.numberPlayers.me = typeOfPlayer.player;
-								if (userAndRoomMatch) {
+								if (userAndRoomNotMatch) {
 									this.data.error = 'error player';
 									Router.go('/error');
 								} else {
+									this.typeOfPlayers(typeOfPlayer.player);
 									this.initPoints();
 									this.listenerChange();
 								}
@@ -147,12 +147,19 @@ const state = {
 	},
 	async existRoomState(idRoom: number) {
 		const promise = await existRoom(idRoom);
-		console.log(promise);
-
 		if (promise == 'ok') {
 			return true;
 		} else {
 			return false;
+		}
+	},
+	typeOfPlayers(me: string) {
+		if (me == 'Player1') {
+			this.data.numberPlayers.me = 'Player1';
+			this.data.numberPlayers.other = 'Player2';
+		} else {
+			this.data.numberPlayers.me = 'Player2';
+			this.data.numberPlayers.other = 'Player1';
 		}
 	},
 	listenerChange() {
