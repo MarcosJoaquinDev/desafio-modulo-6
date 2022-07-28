@@ -20,7 +20,7 @@ export function initPublishedRoomCode() {
 				<header class='header'>
 					<aside class='header__players-score'>
 						<h2 class='header__players-score__me'>${this.me}: 0<h2>
-						<h2 class='header__players-score__another'>${this.anotherPlayer}: 1<h2>
+						<h2 class='header__players-score__another'>${this.anotherPlayer}: 0<h2>
 					</aside>
 					<aside class='header__room'>
 						<h2 class='header__room__title' >Sala:<h2>
