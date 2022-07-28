@@ -7,6 +7,7 @@ import {
 	getData,
 	incomingPlayer,
 	moveOption,
+	resetAllGame,
 	resetMatchGame,
 	resetOnline,
 	playerCreatorName,
@@ -42,6 +43,7 @@ const state = {
 		error: '',
 		otherOnline: false,
 		flagStart: false,
+		meReady: true,
 	},
 	getData() {
 		return this.data;
@@ -72,7 +74,12 @@ const state = {
 			this.data.points.other = res.other.otherPoints;
 		});
 		resetOnline(this.data.rtdbRoomId, this.data.numberPlayers.me);
-		this.resetMatch();
+		this.resetAllMatch();
+	},
+	resetAllMatch() {
+		resetAllGame(this.data.rtdbRoomId).then((res) => {
+			Router.go('/start-game');
+		});
 	},
 	createRoom(name: string) {
 		this.data.name = name;
@@ -149,7 +156,7 @@ const state = {
 			RTDB,
 			`playrooms/${this.data.rtdbRoomId}/currentGame`
 		);
-		let flag: boolean = false;
+
 		onValue(currentGame, (snapshot) => {
 			const data = snapshot.val();
 			let player = map(data);
@@ -181,7 +188,12 @@ const state = {
 			const playerChoiced =
 				this.data.meChoice == '' && this.data.otherChoice == '';
 			const player2Login = player[1].name == '';
-			if (!player2Login && !meConnected && !otherConnected) {
+			if (
+				!player2Login &&
+				!meConnected &&
+				!otherConnected &&
+				state.data.meReady
+			) {
 				Router.go('/start-game');
 			}
 			if (player2Login) {
@@ -190,10 +202,11 @@ const state = {
 			if (playersConnected && !player2Login && playerChoiced) {
 				Router.go('/game');
 			}
-			if (meConnected && otherConnected == false) {
+			/*
+			if (meConnected && otherConnected == false && state.data.meReady) {
 				Router.go('/waiting-room');
 			}
-
+			*/
 			const twoOptionsStart =
 				this.data.meChoice == '' || this.data.otherChoice == '';
 			if (
@@ -231,7 +244,9 @@ const state = {
 		moveOption(player, rtdb, move).then((res) => {});
 	},
 	resetMatch() {
-		resetMatchGame(this.data.rtdbRoomId).then((res) => {});
+		resetMatchGame(this.data.rtdbRoomId, this.data.numberPlayers.me).then(
+			(res) => {}
+		);
 	},
 	savePointsInrtdb() {
 		savePointsInDataBase(

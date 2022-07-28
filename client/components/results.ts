@@ -16,6 +16,7 @@ const optionResults = [
 	},
 ];
 import { state } from '../state';
+import { Router } from '@vaadin/router';
 export function initResults() {
 	customElements.define(
 		'x-points-results',
@@ -27,6 +28,7 @@ export function initResults() {
 			constructor() {
 				super();
 				this.render();
+				state.data.meReady = false;
 			}
 			listener() {
 				const buttonEl = this.shadow.querySelector(
@@ -34,6 +36,8 @@ export function initResults() {
 				) as any;
 				buttonEl.addEventListener('click', () => {
 					state.resetMatch();
+					state.data.meReady = true;
+					Router.go('/start-game');
 				});
 			}
 			render() {

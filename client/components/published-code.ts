@@ -33,7 +33,7 @@ export function initPublishedRoomCode() {
 					<p class='main-message__bottom' >Con tu contrincante</p>
 				</section>
 				<footer class='hands'>
-					<img class='container__hands__rock' src='${piedra}}'/>
+					<img class='container__hands__rock' src='${piedra}'/>
 					<img class='container__hands__paper' src='${papel}' />
 					<img class='container__hands__scissors' src='${tijera}' />
 				</footer>

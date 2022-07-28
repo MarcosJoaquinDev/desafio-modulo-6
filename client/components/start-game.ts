@@ -20,6 +20,7 @@ export function initStartGame() {
 				buttonEl.addEventListener('click', () => {
 					state.data.flagStart = true;
 					state.resetStartGame();
+					Router.go('/waiting-room');
 				});
 			}
 			userOnline(otherOnline: boolean) {
@@ -60,7 +61,7 @@ export function initStartGame() {
 			<button class='button-main'>¡Jugar!</button>
 			</div>
 			<footer class='hands'>
-			<img class='container__hands__rock' src='${piedra}}'/>
+			<img class='container__hands__rock' src='${piedra}'/>
 				<img class='container__hands__paper' src='${papel}' />
 				<img class='container__hands__scissors' src='${tijera}' />
 				</footer>

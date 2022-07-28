@@ -13,11 +13,7 @@ function main() {
 	APP.use(express.static('dist'));
 	const playersCollection = DATA_BASE.collection('players');
 	const playRoomsCollection = DATA_BASE.collection('playrooms');
-	/*
-	APP.get('*', (req, res) => {
-		res.sendFile(__dirname + 'dist/index.html');
-	});*/
-	// MANDO UN NOMBRE Y ME DEVUELVE EL ID DEL NOMBRE
+
 	APP.post('/player', (req, res) => {
 		const { name } = req.body;
 		playersCollection
@@ -36,7 +32,6 @@ function main() {
 				}
 			});
 	});
-	// MANDO EL ID DEL NOMBRE Y ME DEVUEL IDcorto DE LA PLAYROOM
 	APP.post('/playroom', (req, res) => {
 		const { userId } = req.body;
 		playersCollection
@@ -79,7 +74,6 @@ function main() {
 				}
 			});
 	});
-	// MANDO EL USERID Y ID corto DE LA ROOM Y ME DEVUELVE EL ID DE LA RTDB
 	APP.get('/playroom/:playRoomId', (req, res) => {
 		const { userId } = req.query;
 		const { playRoomId } = req.params;
@@ -186,6 +180,19 @@ function main() {
 		});
 	});
 	APP.post('/reset', (req, res) => {
+		const { rtdb_Id } = req.body;
+		const { player } = req.body;
+		const choicePlayer = RTDB.ref(
+			'playrooms/' + rtdb_Id + '/currentGame/' + player + '/choice'
+		);
+		const startPlayer = RTDB.ref(
+			'playrooms/' + rtdb_Id + '/currentGame/' + player + '/start'
+		);
+		startPlayer.set(false);
+		choicePlayer.set('');
+		res.json({ msj: 'ok' });
+	});
+	APP.post('/reset-all-match', (req, res) => {
 		const { rtdb_Id } = req.body;
 		const choicePlayer1 = RTDB.ref(
 			'playrooms/' + rtdb_Id + '/currentGame/' + 'Player1/' + 'choice'

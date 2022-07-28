@@ -59,6 +59,14 @@ async function gameStateReset(player: string, rtdb_Id: string) {
 	});
 	return promise.json();
 }
+async function resetAllGame(rtdb_Id: string) {
+	const promise = await fetch('/reset-all-match', {
+		method: 'post',
+		body: JSON.stringify({ rtdb_Id }),
+		headers: { 'Content-Type': 'application/json' },
+	});
+	return promise.json();
+}
 async function moveOption(player: string, rtdb_Id: string, move: string) {
 	const promise = await fetch('/move', {
 		method: 'post',
@@ -67,10 +75,10 @@ async function moveOption(player: string, rtdb_Id: string, move: string) {
 	});
 	return promise.json();
 }
-async function resetMatchGame(rtdb_Id: string) {
+async function resetMatchGame(rtdb_Id: string, player: string) {
 	const promise = await fetch('/reset', {
 		method: 'post',
-		body: JSON.stringify({ rtdb_Id }),
+		body: JSON.stringify({ rtdb_Id, player }),
 		headers: { 'Content-Type': 'application/json' },
 	});
 	return promise.json();
@@ -118,4 +126,5 @@ export {
 	getData,
 	resetOnline,
 	savePointsInDataBase,
+	resetAllGame,
 };

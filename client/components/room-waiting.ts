@@ -31,7 +31,7 @@ export function initRoomWaiting() {
 				</header>
 				<h1 class='title-main'>Esperando a que ${this.anotherPlayer} presione ¡Jugar!...<h1>
 				<footer class='hands'>
-					<img class='container__hands__rock' src='${piedra}}'/>
+					<img class='container__hands__rock' src='${piedra}'/>
 					<img class='container__hands__paper' src='${papel}' />
 					<img class='container__hands__scissors' src='${tijera}' />
 				</footer>

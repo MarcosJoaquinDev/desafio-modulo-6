@@ -55,10 +55,10 @@ export function initShowAnimationResults() {
 					}
 				}
 				x-hand-option.up{
-					animation: 1.5s ease-out 0s 1 slideInFromUp;
+					animation: 2s ease-out 0s 1 slideInFromUp;
 				}
 				x-hand-option.down{
-					animation: 1.5s ease-out 0s 1 slideInFromDown;
+					animation: 2s ease-out 0s 1 slideInFromDown;
 				}
 				`;
 				this.shadow.appendChild(styleEl);
