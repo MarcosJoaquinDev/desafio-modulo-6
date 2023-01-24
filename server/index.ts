@@ -2,6 +2,7 @@ import * as express from 'express';
 import * as cors from 'cors';
 import { DATA_BASE, RTDB } from './firestore';
 import { v4 as uuid } from 'uuid';
+
 const APP = express();
 
 APP.use(cors());
